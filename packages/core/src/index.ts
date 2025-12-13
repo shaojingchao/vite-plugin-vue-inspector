@@ -105,7 +105,7 @@ export interface VitePluginInspectorOptions {
   cleanHtml?: boolean
 
   /**
-   * Target editor when open in editor (v5.1.0+)
+   * Target editor when open in editor
    *
    * @default process.env.LAUNCH_EDITOR ?? code (Visual Studio Code)
    */

@@ -1,12 +1,12 @@
 
 <p align="center">
-<a href="https://github.com/webfansplz/vite-plugin-vue-inspector"><img src="./logo.svg" width="180" alt="vite-plugin-vue-inspector"></a>
+<a href="https://github.com/shaojingchao/vite-plugin-vue-inspector"><img src="./logo.svg" width="180" alt="vite-plugin-vue-inspector"></a>
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/v/vite-plugin-vue-inspector" alt="NPM Version" /></a>
   <a href="https://www.npmjs.com/package/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/dt/vite-plugin-vue-inspector" alt="NPM Downloads" /></a>
-  <a href="https://github.com/webfansplz/vite-plugin-vue-inspector/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/webfansplz/vite-plugin-vue-inspector" alt="License" /></a>
+  <a href="https://github.com/shaojingchao/vite-plugin-vue-inspector/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/shaojingchao/vite-plugin-vue-inspector" alt="License" /></a>
 </p>
 
 <p align="center">
@@ -168,15 +168,34 @@ interface VitePluginInspectorOptions {
    *
    * @default code (Visual Studio Code)
    */
-  launchEditor?: 'appcode' | 'atom' | 'atom-beta' | 'brackets' | 'clion' | 'code' | 'code-insiders' | 'codium' | 'emacs' | 'idea' | 'notepad++' | 'pycharm' | 'phpstorm' | 'rubymine' | 'sublime' | 'vim' | 'visualstudio' | 'webstorm' | 'cursor'
+  launchEditor?: 'appcode'
+  | 'atom'
+  | 'atom-beta'
+  | 'brackets'
+  | 'clion'
+  | 'code'
+  | 'code-insiders'
+  | 'codium'
+  | 'emacs'
+  | 'idea'
+  | 'notepad++'
+  | 'pycharm'
+  | 'phpstorm'
+  | 'rubymine'
+  | 'sublime'
+  | 'vim'
+  | 'visualstudio'
+  | 'webstorm'
+  | 'cursor'
+  | 'trae'
 }
 ```
 
 ### Example
 
-- [Vue2](https://github.com/webfansplz/vite-plugin-vue-inspector/tree/main/packages/playground/vue2)
-- [Vue3](https://github.com/webfansplz/vite-plugin-vue-inspector/tree/main/packages/playground/vue3)
-- [Nuxt3](https://github.com/webfansplz/vite-plugin-vue-inspector/tree/main/packages/playground/nuxt)
+- [Vue2](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/vue2)
+- [Vue3](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/vue3)
+- [Nuxt3](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/nuxt)
 
 ## Supported editors
 

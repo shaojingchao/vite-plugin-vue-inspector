@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import Inspector from 'vite-plugin-vue-inspector'
-import Inspect from 'vite-plugin-inspect'
 
 export default defineConfig({
   plugins: [
@@ -11,8 +10,10 @@ export default defineConfig({
     Inspector({
       enabled: true,
       toggleButtonVisibility: 'always',
-      launchEditor: 'cursor',
+      launchEditor: 'trae',
     }),
-    Inspect(),
   ],
+  server: {
+    port: 3000,
+  },
 })

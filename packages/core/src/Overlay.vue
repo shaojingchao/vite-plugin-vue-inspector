@@ -26,6 +26,7 @@ export default {
       enabled: inspectorOptions.enabled,
       toggleCombo: inspectorOptions.toggleComboKey?.toLowerCase?.()?.split?.('-') ?? false,
       disableInspectorOnEditorOpen: inspectorOptions.disableInspectorOnEditorOpen,
+      targetUrlTemplate: inspectorOptions.targetUrlTemplate,
       overlayVisible: false,
       position: {
         x: 0,
@@ -232,15 +233,24 @@ export default {
         return
       this.toggleEnabled()
     },
-    openInEditor(baseUrl, file, line, column) {
+    openInEditor(url) {
       /**
        * Vite built-in support
        * https://github.com/vitejs/vite/blob/d59e1acc2efc0307488364e9f2fad528ec57f204/packages/vite/src/node/server/index.ts#L569-L570
        */
+      let targetUrl = url.toString()
 
-      const _url = baseUrl instanceof URL ? baseUrl : `${baseUrl}/__open-in-editor?file=${encodeURIComponent(`${file}:${line}:${column}`)}`
+      if (['trae', 'lingma'].includes(inspectorOptions.launchEditor)) {
+        const [file, line, column] = url.searchParams.get('file')?.split(':') ?? []
+
+        url.searchParams.set('file', file)
+        url.hash = `#L${line}-C${column}`
+
+        targetUrl = url.toString()
+      }
+
       const promise = fetch(
-        _url,
+        targetUrl,
         {
           mode: 'no-cors',
         },
@@ -304,7 +314,7 @@ export default {
       <a
         :style="bannerPosition"
         class="vue-inspector-banner vue-inspector-card"
-        href="https://github.com/webfansplz/vite-plugin-vue-inspector"
+        href="https://github.com/shaojingchao/vite-plugin-vue-inspector"
         target="_blank"
       >
         <div>vite-plugin-vue-inspector</div>
