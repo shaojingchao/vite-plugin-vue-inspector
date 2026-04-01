@@ -1,6 +1,6 @@
 {
   "name": "@shaojc/vite-plugin-vue-inspector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "jump to local IDE source code while click the element of browser automatically.",
   "author": "shaojingchao",

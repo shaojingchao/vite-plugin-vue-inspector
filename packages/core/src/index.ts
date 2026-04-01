@@ -1,7 +1,8 @@
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { URL, fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import process from 'node:process'
+import { execSync } from 'node:child_process'
 import { bold, dim, green, yellow } from 'kolorist'
 import { normalizePath } from 'vite'
 import type { PluginOption, ResolvedConfig } from 'vite'
@@ -109,7 +110,7 @@ export interface VitePluginInspectorOptions {
    *
    * @default process.env.LAUNCH_EDITOR ?? code (Visual Studio Code)
    */
-  launchEditor?: 'appcode' | 'atom' | 'atom-beta' | 'brackets' | 'clion' | 'code' | 'code-insiders' | 'codium' | 'emacs' | 'idea' | 'notepad++' | 'pycharm' | 'phpstorm' | 'rubymine' | 'sublime' | 'vim' | 'visualstudio' | 'webstorm' | 'rider' | 'cursor' | string
+  launchEditor?: 'appcode' | 'atom' | 'atom-beta' | 'brackets' | 'clion' | 'code' | 'code-insiders' | 'codium' | 'emacs' | 'idea' | 'notepad++' | 'pycharm' | 'phpstorm' | 'rubymine' | 'sublime' | 'vim' | 'visualstudio' | 'webstorm' | 'rider' | 'cursor' | 'trae' | 'lingma' | string
 
   /**
    * Disable animation/transition, will auto disable when `prefers-reduced-motion` is set
@@ -220,6 +221,24 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
           const keys = normalizeComboKeyPrint(toggleComboKey)
           _printUrls()
           console.log(`  ${green('➜')}  ${bold('Vue Inspector')}: ${green(`Press ${yellow(keys)} in App to toggle the Inspector`)}\n`)
+        })
+
+        server.middlewares.use((req, res, next) => {
+          const launchEditor = normalizedOptions.launchEditor
+          if (!req.url || !req.url.includes('__open-in-editor') || !['trae', 'trae-cn', 'lingma'].includes(launchEditor))
+            return next()
+
+          try {
+            const fileParam = new URL(req.url, 'http://localhost').searchParams.get('file')
+            const fullPath = `${process.cwd()}/${fileParam}`
+
+            execSync(`${launchEditor} -g ${fullPath}`)
+          }
+          catch (error) {
+            console.error('Error in open-in-editor-fix:', error)
+          }
+
+          return next()
         })
       },
       transformIndexHtml(html) {

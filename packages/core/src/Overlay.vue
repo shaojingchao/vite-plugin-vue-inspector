@@ -238,19 +238,8 @@ export default {
        * Vite built-in support
        * https://github.com/vitejs/vite/blob/d59e1acc2efc0307488364e9f2fad528ec57f204/packages/vite/src/node/server/index.ts#L569-L570
        */
-      let targetUrl = url.toString()
-
-      if (['trae', 'lingma'].includes(inspectorOptions.launchEditor)) {
-        const [file, line, column] = url.searchParams.get('file')?.split(':') ?? []
-
-        url.searchParams.set('file', file)
-        url.hash = `#L${line}-C${column}`
-
-        targetUrl = url.toString()
-      }
-
       const promise = fetch(
-        targetUrl,
+        url.toString(),
         {
           mode: 'no-cors',
         },

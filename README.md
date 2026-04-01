@@ -1,11 +1,11 @@
 
 <p align="center">
-<a href="https://github.com/shaojingchao/vite-plugin-vue-inspector"><img src="./logo.svg" width="180" alt="vite-plugin-vue-inspector"></a>
+<a href="https://github.com/shaojingchao/vite-plugin-vue-inspector"><img src="./logo.svg" width="180" alt="@shaojc/vite-plugin-vue-inspector"></a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/v/vite-plugin-vue-inspector" alt="NPM Version" /></a>
-  <a href="https://www.npmjs.com/package/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/dt/vite-plugin-vue-inspector" alt="NPM Downloads" /></a>
+  <a href="https://www.npmjs.com/package/@shaojc/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/v/@shaojc/vite-plugin-vue-inspector" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/package/@shaojc/vite-plugin-vue-inspector" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/npm/dt/@shaojc/vite-plugin-vue-inspector" alt="NPM Downloads" /></a>
   <a href="https://github.com/shaojingchao/vite-plugin-vue-inspector/blob/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/shaojingchao/vite-plugin-vue-inspector" alt="License" /></a>
 </p>
 
@@ -25,13 +25,9 @@ A vite plugin which provides the ability that to jump to the local IDE when you 
 
 ```bash
 
-# vite-plugin-vue-inspector 
+# @shaojc/vite-plugin-vue-inspector
 
-pnpm install vite-plugin-vue-inspector -D
-
-# unplugin-vue-inspector
-
-pnpm install unplugin-vue-inspector -D
+pnpm install @shaojc/vite-plugin-vue-inspector -D
 
 ```
 
@@ -40,49 +36,15 @@ pnpm install unplugin-vue-inspector -D
 ### Configuration Vite
 
 ```ts
-// for Vue2
-
-import { defineConfig, } from 'vite'
-import { createVuePlugin, } from 'vite-plugin-vue2'
-
-import Inspector from 'unplugin-vue-inspector/vite' // OR vite-plugin-vue-inspector
-
-export default defineConfig({
-  plugins: [
-    createVuePlugin(),
-    Inspector({
-      vue: 2
-    }),
-  ],
-})
-```
-
-```ts
 // for Vue3
 
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 
-import Inspector from 'unplugin-vue-inspector/vite' // OR vite-plugin-vue-inspector
+import Inspector from '@shaojc/vite-plugin-vue-inspector'
 
 export default defineConfig({
   plugins: [Vue(), Inspector()],
-})
-```
-
-```ts
-// for Nuxt3
-// nuxt.config.ts
-import { defineNuxtConfig } from 'nuxt/config'
-import Inspector from 'vite-plugin-vue-inspector'
-
-export default defineNuxtConfig({
-  modules: [
-    ['unplugin-vue-inspector/nuxt', {
-      enabled: true,
-      toggleButtonVisibility: 'always',
-    }],
-  ],
 })
 ```
 
@@ -188,14 +150,10 @@ interface VitePluginInspectorOptions {
   | 'webstorm'
   | 'cursor'
   | 'trae'
+  | 'trae-cn'
+  | 'lingma'
 }
 ```
-
-### Example
-
-- [Vue2](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/vue2)
-- [Vue3](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/vue3)
-- [Nuxt3](https://github.com/shaojingchao/vite-plugin-vue-inspector/tree/main/packages/playground/nuxt)
 
 ## Supported editors
 
@@ -220,6 +178,9 @@ interface VitePluginInspectorOptions {
 | `visualstudio` | [Visual Studio](https://www.visualstudio.com/vs/) | | |✓|
 | `webstorm` | [WebStorm](https://www.jetbrains.com/webstorm/) |✓|✓|✓|
 | `cursor` | [Cursor](https://www.cursor.com/) |✓|✓|✓|
+| `trae` | [Trae](https://trae.sh/) |✓|✓|✓|
+| `trae-cn` | [Trae-CN](https://trae-cn.com/) |✓|✓|✓|
+| `lingma` | [Lingma](https://lingma.com/) |✓|✓|✓|
 
 ## 🔌  Configuration IDE / Editor
 
@@ -322,7 +283,7 @@ export LAUNCH_EDITOR=vim
 You can also use control inspector programmatically, by accessing the `__VUE_INSPECTOR__` global variable.
 
 ```ts
-import type { VueInspectorClient } from 'vite-plugin-vue-inspector'
+import type { VueInspectorClient } from '@shaojc/vite-plugin-vue-inspector'
 
 const inspector: VueInspectorClient = window.__VUE_INSPECTOR__
 
@@ -333,16 +294,3 @@ if (inspector) {
   inspector.disable()
 }
 ```
-
-## 🌸 Credits
-
-This project is inspired by [react-dev-inspector](https://github.com/zthxxx/react-dev-inspector) .
-
-Partially implementation is inspired by [vite-plugin-svelte-inspector](https://github.com/sveltejs/vite-plugin-svelte/tree/main/packages/vite-plugin-svelte-inspector) .
-
-## 🤖️ Analysis of Theory
-
-[Chinese] [点击页面元素,这个Vite插件帮我打开了Vue组件](https://juejin.cn/post/7077347158545924127)
-## 📄 License
-
-[MIT LICENSE](./LICENSE)
