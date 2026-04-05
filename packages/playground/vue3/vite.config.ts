@@ -8,8 +8,9 @@ export default defineConfig({
     Vue(),
     VueJsx(),
     Inspector({
-      enabled: true,
+      // enabled: true,
       toggleButtonVisibility: 'always',
+      disableInspectorOnEditorOpen: true,
       launchEditor: 'trae',
     }),
   ],

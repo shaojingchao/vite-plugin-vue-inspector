@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.43.1",
-    "@changesets/cli": "^2.29.8",
+    "@changesets/cli": "^2.30.0",
     "@types/node": "^20.8.0",
     "eslint": "^8.50.0",
     "esmo": "^0.17.0",

@@ -75,7 +75,7 @@ export default {
       x = Math.max(margin, x)
       x = Math.min(x, window.innerWidth - floatsWidth - margin)
       if (x < floatsWidth / 2) {
-        x = floatsWidth / 2 + margin
+        x = floatsWidth / 2 + margin 
       }
 
       y = Math.max(margin, y)

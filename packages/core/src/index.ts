@@ -225,17 +225,19 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
 
         server.middlewares.use((req, res, next) => {
           const launchEditor = normalizedOptions.launchEditor
-          if (!req.url || !req.url.includes('__open-in-editor') || !['trae', 'trae-cn', 'lingma'].includes(launchEditor))
+          if (!req.url || !req.url.includes('__open-in-editor') || !['trae', 'trae-cn', 'lingma'].includes(launchEditor)) {
             return next()
+          }
 
           try {
             const fileParam = new URL(req.url, 'http://localhost').searchParams.get('file')
             const fullPath = `${process.cwd()}/${fileParam}`
 
             execSync(`${launchEditor} -g ${fullPath}`)
+            return
           }
           catch (error) {
-            console.error('Error in open-in-editor-fix:', error)
+            console.warn('open-in-editor failed:', error)
           }
 
           return next()

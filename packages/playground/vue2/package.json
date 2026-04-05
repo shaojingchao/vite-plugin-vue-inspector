@@ -12,9 +12,9 @@
     "vue-template-compiler": "2.7.14"
   },
   "devDependencies": {
+    "@shaojc/vite-plugin-vue-inspector": "workspace:*",
     "sass": "^1.68.0",
-    "unplugin-vue-inspector": "workspace:*",
-    "vite-plugin-vue-inspector": "workspace:*",
+    "unplugin-vue-inspector": "2.4.0",
     "vite-plugin-vue2": "^1.9.3"
   }
 }

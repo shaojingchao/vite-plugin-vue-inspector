@@ -7,8 +7,8 @@
     "preview": "nuxi preview"
   },
   "devDependencies": {
+    "@shaojc/vite-plugin-vue-inspector": "workspace:*",
     "nuxt": "3.7.4",
-    "unplugin-vue-inspector": "workspace:*",
-    "vite-plugin-vue-inspector": "workspace:*"
+    "unplugin-vue-inspector": "2.4.0"
   }
 }
