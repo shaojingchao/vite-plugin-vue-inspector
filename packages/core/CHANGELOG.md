@@ -1,5 +1,17 @@
 # @shaojc/vite-plugin-vue-inspector
 
+## 1.1.2
+
+### Patch Changes
+
+- 自动关闭 inspector 按钮
+
+## 1.1.0
+
+### Minor Changes
+
+- 1.1.0
+
 ## 1.0.5
 
 ### Patch Changes

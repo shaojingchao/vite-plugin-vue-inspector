@@ -234,7 +234,8 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
             const fullPath = `${process.cwd()}/${fileParam}`
 
             execSync(`${launchEditor} -g ${fullPath}`)
-            return
+
+            req.url = `/__open-in-editor`
           }
           catch (error) {
             console.warn('open-in-editor failed:', error)
