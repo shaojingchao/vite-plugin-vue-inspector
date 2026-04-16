@@ -113,6 +113,12 @@ export interface VitePluginInspectorOptions {
   launchEditor?: 'appcode' | 'atom' | 'atom-beta' | 'brackets' | 'clion' | 'code' | 'code-insiders' | 'codium' | 'emacs' | 'idea' | 'notepad++' | 'pycharm' | 'phpstorm' | 'rubymine' | 'sublime' | 'vim' | 'visualstudio' | 'webstorm' | 'rider' | 'cursor' | 'trae' | 'lingma' | string
 
   /**
+   * custom launch editor command, for command line launch
+   * @default ''
+   */
+  launchEditorCommand?: string
+
+  /**
    * Disable animation/transition, will auto disable when `prefers-reduced-motion` is set
    * @default false
    */
@@ -225,7 +231,11 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
 
         server.middlewares.use((req, res, next) => {
           const launchEditor = normalizedOptions.launchEditor
-          if (!req.url || !req.url.includes('__open-in-editor') || !['trae', 'trae-cn', 'lingma'].includes(launchEditor)) {
+          const launchEditorCommand = normalizedOptions.launchEditorCommand
+
+          if (
+            !req.url || !req.url.includes('__open-in-editor') || (!['trae', 'trae-cn', 'lingma', 'qoder'].includes(launchEditor) && !launchEditorCommand)
+          ) {
             return next()
           }
 
@@ -233,7 +243,7 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
             const fileParam = new URL(req.url, 'http://localhost').searchParams.get('file')
             const fullPath = `${process.cwd()}/${fileParam}`
 
-            execSync(`${launchEditor} -g ${fullPath}`)
+            execSync(`${launchEditorCommand || launchEditor} -g ${fullPath}`)
 
             req.url = `/__open-in-editor`
           }

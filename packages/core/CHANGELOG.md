@@ -1,5 +1,11 @@
 # @shaojc/vite-plugin-vue-inspector
 
+## 1.1.3
+
+### Patch Changes
+
+- 支持自定义 cli 调用编辑器名称
+
 ## 1.1.2
 
 ### Patch Changes
